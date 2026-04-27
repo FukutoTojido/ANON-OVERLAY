@@ -22,7 +22,7 @@ export default class KeyGraphHandler {
 
 	canvas = document.querySelector<HTMLCanvasElement>("#key-graph");
 
-	static TIME_WINDOW = 500;
+	static TIME_WINDOW = 300;
 
 	private _k1Color = "white";
 	private _k2Color = "white";

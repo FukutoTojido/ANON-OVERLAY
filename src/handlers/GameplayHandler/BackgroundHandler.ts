@@ -5,6 +5,8 @@ type Swatch = Awaited<
 	ReturnType<InstanceType<typeof Vibrant>["getPalette"]>
 >["Vibrant"];
 
+const BASE_URL = import.meta.env.DEV ? import.meta.env.VITE_BASE_URL : `http://${window.location.host}`
+
 export interface Palette {
 	Vibrant: Swatch;
 	Muted: Swatch;
@@ -34,7 +36,7 @@ export default class BackgroundHandler {
 				const rankingPanel = document.querySelector<HTMLDivElement>("#rankingPanel");
 				if (!rankingPanel) return;
 
-				const url = `${import.meta.env.VITE_BASE_URL}/Songs/${background.replaceAll("\\", "/")}`;
+				const url = `${BASE_URL}/Songs/${background.replaceAll("\\", "/")}`;
 				// app.style.backgroundImage = `linear-gradient(to bottom, rgb(0 0 0 /.6), rgb(0 0 0 /.6) 100%), url("${url}")`;
 				rankingPanel.style.backgroundImage = `linear-gradient(to bottom, transparent 40%, rgb(0 0 0 /.6) 100%), url("${url}")`;
 

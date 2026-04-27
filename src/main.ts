@@ -6,7 +6,10 @@ import RankingPanelHandler from "./handlers/RankingPanelHandler";
 import "./style.css";
 import { query } from "./utils";
 
-const engine = new ZEngine(import.meta.env.VITE_WS_URL, [
+const WS_URL = import.meta.env.DEV ? import.meta.env.VITE_WS_URL : `ws://${window.location.host}/websocket/v2`;
+const WS_PRECISE_URL = import.meta.env.DEV ? import.meta.env.VITE_WS_PRECISE_URL : `ws://${window.location.host}/websocket/v2/precise`;
+
+const engine = new ZEngine(WS_URL, [
 	"state",
 	{
 		field: "beatmap",
@@ -49,7 +52,7 @@ const engine = new ZEngine(import.meta.env.VITE_WS_URL, [
 		keys: ["interfaceVisible"],
 	},
 ]);
-const precise = new ZEngine(import.meta.env.VITE_WS_PRECISE_URL);
+const precise = new ZEngine(WS_PRECISE_URL);
 
 new GameplayHandler(engine, precise);
 new RankingPanelHandler(engine);
