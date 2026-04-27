@@ -1,0 +1,18 @@
+{
+	"linter": {
+		"rules": {
+			"suspicious": {
+				"noUnknownAtRules": {
+					"options": {
+						"ignore": ["tailwind", "apply", "theme"]
+					}
+				}
+			}
+		}
+	},
+	"css": {
+		"parser": {
+			"tailwindDirectives": true
+		}
+	}
+}

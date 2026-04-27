@@ -1,0 +1,407 @@
+@import "tailwindcss";
+
+@font-face {
+	font-family: "Die Grotesk";
+	src: url("/fonts/die-grotesk.ttf");
+}
+
+@font-face {
+	font-family: "Die Grotesk";
+	font-style: italic;
+	src: url("/fonts/die-grotesk-italic.ttf");
+}
+
+@font-face {
+	font-family: "Space Grotesk";
+	src: url("/fonts/space-grotesk.ttf");
+}
+
+@font-face {
+	font-family: "Altmann Grotesk";
+	font-weight: 200;
+	src: url("/fonts/altmann-grotesk/thin.woff2");
+}
+
+@font-face {
+	font-family: "Altmann Grotesk";
+	font-weight: 300;
+	src: url("/fonts/altmann-grotesk/light.woff2");
+}
+
+@font-face {
+	font-family: "Altmann Grotesk";
+	font-weight: 400;
+	src: url("/fonts/altmann-grotesk/regular.woff2");
+}
+
+@font-face {
+	font-family: "Altmann Grotesk";
+	font-weight: 500;
+	src: url("/fonts/altmann-grotesk/medium.woff2");
+}
+
+@font-face {
+	font-family: "Altmann Grotesk";
+	font-weight: 700;
+	src: url("/fonts/altmann-grotesk/bold.woff2");
+}
+
+@theme {
+	--color-judgement-good: #6cff8c;
+	--color-judgement-meh: #ffe063;
+	--color-judgement-miss: #ff3064;
+
+	--color-ranking-great: #8bc7ff;
+	--color-ranking-good: #6cff8c;
+	--color-ranking-meh: #ffe063;
+	--color-ranking-miss: #ff638a;
+
+	--color-grade-hidden: #fff;
+	--color-grade-x: #ffc750;
+	--color-grade-s: #ffd986;
+	--color-grade-a: #42ff81;
+	--color-grade-b: #42cdff;
+	--color-grade-c: #e494ff;
+	--color-grade-d: #ff7e80;
+	--color-accent: var(--accent);
+
+	--drop-shadow-grade: 0 4px 10px rgba(255 255 255 / 0.5);
+	--drop-shadow-judgement: 0 4px 10px rgba(0 0 0 / 0.5);
+	--drop-shadow-ranking-grade: 0 0px 50px rgba(255 255 255 / 0.5);
+	--drop-shadow-ranking-judgement: 0 2px 30px rgba(255 255 255 / 0.5);
+
+	--font-default: "Die Grotesk";
+	--font-numbers: "Die Grotesk";
+}
+
+:root {
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	--accent: #f84f84;
+}
+
+* {
+	line-height: 1em !important;
+}
+
+body {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+
+	font-family: "Die Grotesk", sans-serif;
+	color: white;
+
+	&.hideNp {
+		#np-container {
+			display: none;
+		}
+	}
+}
+
+.font-a {
+	font-variation-settings: "opsz" 6;
+}
+
+.font-b {
+	font-variation-settings: "opsz" 18;
+}
+
+.font-c {
+	font-variation-settings: "opsz" 30;
+}
+
+.font-d {
+	font-variation-settings: "opsz" 42;
+}
+
+#user-country::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+
+	width: 20px;
+	height: 20px;
+
+	filter: contrast(0) brightness(2);
+	opacity: 25%;
+
+	background: inherit;
+}
+
+#leaderboard-me {
+	filter: drop-shadow(-20px 0 20px var(--accent));
+}
+
+#gradeContainer {
+	mask-image: url("/static/grade-mask.png");
+	mask-size: cover;
+	mask-position: center;
+}
+
+.pressed {
+	transform: scale(0.8);
+	opacity: 70%;
+}
+
+number-flow::part(number) {
+	--number-flow-mask-height: 0em;
+}
+
+number-flow::part(digit) {
+	font-family: var(--font-numbers);
+	letter-spacing: var(--tracking-tighter);
+	font-variant-numeric: tabular-nums;
+}
+
+number-flow::part(prefix) {
+	font-family: var(--font-default);
+}
+
+number-flow::part(suffix) {
+	font-family: var(--font-default);
+}
+
+number-flow#ur::part(suffix) {
+	font-size: var(--text-sm);
+	line-height: var(--text-sm);
+	margin-left: 4px;
+}
+
+number-flow#maxCombo::part(prefix) {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#maxComboContainer {
+	interpolate-size: allow-keywords;
+	overflow: hidden;
+
+	transition: 400ms ease-out;
+}
+
+[data-is-lower="true"] {
+	transform: translateY(50px);
+}
+
+#key-graph {
+	mask-image: url("/static/key-graph-mask.png");
+	mask-repeat: no-repeat;
+	mask-size: cover;
+	mask-position: center;
+}
+
+.skewCard {
+	position: absolute;
+	inset: 0;
+
+	width: 100%;
+	height: 100%;
+
+	border-radius: 20px;
+	backdrop-filter: blur(100px);
+
+	box-shadow: 0 4px 10px rgba(0 0 0 / 0.25);
+
+	transform: skewX(5deg);
+}
+
+.antiSkewCard {
+	position: absolute;
+	inset: 0;
+
+	width: 100%;
+	height: 100%;
+
+	border-radius: 20px;
+	backdrop-filter: blur(100px);
+
+	box-shadow: 0 4px 10px rgba(0 0 0 / 0.25);
+
+	transform: skewX(-5deg);
+}
+
+.ranking-grade {
+	transition-property: opacity, display;
+	transition-timing-function: ease-in-out;
+	transition-duration: 400ms;
+	transition-behavior: allow-discrete;
+}
+
+#rankingPanel {
+	transition-property: opacity, display;
+	transition-timing-function: ease-in-out;
+	transition-duration: 300ms;
+	transition-behavior: allow-discrete;
+}
+
+#app {
+	transition-property: opacity, display;
+	transition-timing-function: ease-in-out;
+	transition-duration: 300ms;
+	transition-behavior: allow-discrete;
+}
+
+*:has(.antiSkewCard),
+*:has(.skewCard) {
+	transform-origin: bottom center;
+}
+
+@keyframes growIn {
+	from {
+		opacity: 0;
+		transform: scale(0.5) translateY(50px);
+	}
+
+	to {
+		opacity: 1;
+		transform: none;
+	}
+}
+
+.growIn {
+	animation: growIn cubic-bezier(0.34, 1.56, 0.64, 1) 500ms 300ms backwards;
+}
+
+@starting-style {
+	.ranking-grade {
+		opacity: 0;
+	}
+
+	#rankingPanel {
+		opacity: 0;
+	}
+
+	#app {
+		opacity: 0;
+	}
+}
+
+.mod {
+	position: relative;
+	height: 100%;
+	aspect-ratio: 120 / 84;
+	flex-shrink: 0;
+
+	margin-right: -10px;
+
+	&:last-child {
+		margin-right: 0px;
+	}
+
+	filter: drop-shadow(0 2px 4px rgba(0 0 0 / 0.25));
+
+	&::before {
+		content: "";
+
+		position: absolute;
+		display: block;
+
+		width: 100%;
+		height: 100%;
+
+		mask-image: url("/static/mods/mod-icon.svg");
+		mask-size: cover;
+		mask-position: center;
+
+		background-color: #ffcc22;
+	}
+
+	&::after {
+		content: "";
+
+		position: absolute;
+		display: block;
+
+		width: 100%;
+		height: 100%;
+
+		mask-size: cover;
+		mask-position: center;
+
+		background-color: #594500;
+	}
+
+	&.inc {
+		&::before {
+			background-color: #ff6666;
+		}
+
+		&::after {
+			background-color: #591919;
+		}
+	}
+
+	&.dec {
+		&::before {
+			background-color: #b3ff66;
+		}
+
+		&::after {
+			background-color: #385919;
+		}
+	}
+
+	&.utils {
+		&::before {
+			background-color: #66ccff;
+		}
+
+		&::after {
+			background-color: #194559;
+		}
+	}
+
+	&.EZ::after {
+		mask-image: url("/static/mods/mod-easy.png");
+	}
+	&.NF::after {
+		mask-image: url("/static/mods/mod-no-fail.png");
+	}
+	&.HT::after {
+		mask-image: url("/static/mods/mod-half-time.png");
+	}
+
+	&.HR::after {
+		mask-image: url("/static/mods/mod-hard-rock.png");
+	}
+	&.HD::after {
+		mask-image: url("/static/mods/mod-hidden.png");
+	}
+	&.DT::after {
+		mask-image: url("/static/mods/mod-double-time.png");
+	}
+	&.NC::after {
+		mask-image: url("/static/mods/mod-nightcore.png");
+	}
+	&.SD::after {
+		mask-image: url("/static/mods/mod-sudden-death.png");
+	}
+	&.PF::after {
+		mask-image: url("/static/mods/mod-perfect.png");
+	}
+	&.FL::after {
+		mask-image: url("/static/mods/mod-flashlight.png");
+	}
+
+	&.RX::after {
+		mask-image: url("/static/mods/mod-relax.png");
+	}
+	&.AP::after {
+		mask-image: url("/static/mods/mod-autopilot.png");
+	}
+	&.SO::after {
+		mask-image: url("/static/mods/mod-spun-out.png");
+	}
+	&.AT::after {
+		mask-image: url("/static/mods/mod-autoplay.png");
+	}
+
+	&.V2::after {
+		mask-image: url("/static/mods/mod-score-v2.png");
+	}
+}
