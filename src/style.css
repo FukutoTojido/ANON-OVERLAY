@@ -11,41 +11,6 @@
 	src: url("/fonts/die-grotesk-italic.ttf");
 }
 
-@font-face {
-	font-family: "Space Grotesk";
-	src: url("/fonts/space-grotesk.ttf");
-}
-
-@font-face {
-	font-family: "Altmann Grotesk";
-	font-weight: 200;
-	src: url("/fonts/altmann-grotesk/thin.woff2");
-}
-
-@font-face {
-	font-family: "Altmann Grotesk";
-	font-weight: 300;
-	src: url("/fonts/altmann-grotesk/light.woff2");
-}
-
-@font-face {
-	font-family: "Altmann Grotesk";
-	font-weight: 400;
-	src: url("/fonts/altmann-grotesk/regular.woff2");
-}
-
-@font-face {
-	font-family: "Altmann Grotesk";
-	font-weight: 500;
-	src: url("/fonts/altmann-grotesk/medium.woff2");
-}
-
-@font-face {
-	font-family: "Altmann Grotesk";
-	font-weight: 700;
-	src: url("/fonts/altmann-grotesk/bold.woff2");
-}
-
 @theme {
 	--color-judgement-good: #6cff8c;
 	--color-judgement-meh: #ffe063;
