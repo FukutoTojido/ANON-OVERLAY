@@ -1,11 +1,3 @@
-import type { ClassValue } from "clsx";
-import clsx from "clsx";
-import { type ClassNameValue, twMerge } from "tailwind-merge";
-
-const cn = (...inputs: (ClassNameValue | ClassValue)[]) => {
-	return twMerge(clsx(inputs));
-};
-
 const defaultTimingFunction: EffectTiming = {
 	duration: 250,
 };
@@ -40,4 +32,4 @@ const getPlayerData = async (
 	return await response.json();
 };
 
-export { cn, defaultTimingFunction, debounce, query, getPlayerData };
+export { defaultTimingFunction, debounce, query, getPlayerData };

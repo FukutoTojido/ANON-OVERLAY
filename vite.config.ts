@@ -9,7 +9,12 @@ export default defineConfig({
 			output: {
 				entryFileNames: "assets/[name].js",
 				assetFileNames: "assets/[name].[ext]",
+				preserveModules: true,
 			},
 		},
+		commonjsOptions: {
+			transformMixedEsModules: true,
+		},
+		minify: false,
 	},
 });

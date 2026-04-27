@@ -9,12 +9,12 @@ import KeyGraphHandler from "./KeyGraphHandler";
 import LeaderboardHandler from "./LeaderboardHandler";
 import MaxComboHandler from "./MaxComboHandler";
 import MetadataHandler from "./MetadataHandler";
+import ModsHandler from "./ModsHandler";
 import PerformanceHandler from "./PerformanceHandler";
 import PlayerHandler from "./PlayerHandler";
 import ScoreHandler from "./ScoreHandler";
 import StatsHandler from "./StatsHandler";
 import UnstableRateHandler from "./UnstableRateHandler";
-import ModsHandler from "./ModsHandler";
 
 export default class GameplayHandler {
 	constructor(engine: ZEngine, precise: ZEngine) {
