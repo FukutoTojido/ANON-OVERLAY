@@ -21,23 +21,31 @@ export default defineConfig({
 						},
 						{
 							name: (moduleId) => {
-								const module = path.relative(process.cwd(), moduleId).replace(".js", "").replace(".ts", "");
+								const module = path
+									.relative(process.cwd(), moduleId)
+									.replace(".ts", "");
 								return module;
 							},
 							test: /src\/*/,
 						},
 						{
 							name: "deps/polyfill",
-							test: /vite(\/*)?/
-						}
+							test: /vite(\/*)?/,
+						},
 					],
 				},
 				minifyInternalExports: false,
-				exports: {
-					
-				}
 			},
 		},
 		minify: false,
+	},
+	worker: {
+		format: "es",
+		rolldownOptions: {
+			output: {
+				entryFileNames: "assets/workers/[name].js",
+				chunkFileNames: "assets/workers/[name].js",
+			},
+		},
 	},
 });
