@@ -37,7 +37,7 @@ export default class BackgroundHandler {
 				if (!rankingPanel) return;
 
 				const url = `${BASE_URL}/Songs/${background.replaceAll("\\", "/")}`;
-				app.style.backgroundImage = `linear-gradient(to bottom, rgb(0 0 0 /.6), rgb(0 0 0 /.6) 100%), url("${url}")`;
+				// app.style.backgroundImage = `linear-gradient(to bottom, rgb(0 0 0 /.6), rgb(0 0 0 /.6) 100%), url("${url}")`;
 				rankingPanel.style.backgroundImage = `linear-gradient(to bottom, transparent 40%, rgb(0 0 0 /.6) 100%), url("${url}")`;
 
 				try {
