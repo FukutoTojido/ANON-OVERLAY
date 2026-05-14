@@ -1,10 +1,10 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "anon-overlay",
       "dependencies": {
-        "@/lib/ZEngine": "^1.1.16",
         "@fukutotojido/z-engine": "^1.1.18",
         "@tailwindcss/vite": "^4.2.4",
         "countup.js": "^2.10.0",
@@ -21,8 +21,6 @@
     },
   },
   "packages": {
-    "@/lib/ZEngine": ["@fukutotojido/z-engine@1.1.16", "", { "dependencies": { "jqts": "^0.0.8" } }, "sha512-oJ9Ym2lZEu/lK0BptfpQSpNE4wQQKjhk0pWwmVo6g9tqRn9Y1l4hG+q8UJ9e1jeF5TARXOwqKT3i1kCq07v4sg=="],
-
     "@emnapi/core": ["@emnapi/core@1.10.0", "", { "dependencies": { "@emnapi/wasi-threads": "1.2.1", "tslib": "^2.4.0" } }, "sha512-yq6OkJ4p82CAfPl0u9mQebQHKPJkY7WrIuk205cTYnYe+k2Z8YBh11FrbRG/H6ihirqcacOgl2BIO8oyMQLeXw=="],
 
     "@emnapi/runtime": ["@emnapi/runtime@1.10.0", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA=="],

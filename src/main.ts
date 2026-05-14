@@ -6,8 +6,12 @@ import RankingPanelHandler from "./handlers/RankingPanelHandler";
 import "./style.css";
 import { query } from "./utils";
 
-const WS_URL = import.meta.env.DEV ? import.meta.env.VITE_WS_URL : `ws://${window.location.host}/websocket/v2`;
-const WS_PRECISE_URL = import.meta.env.DEV ? import.meta.env.VITE_WS_PRECISE_URL : `ws://${window.location.host}/websocket/v2/precise`;
+const WS_URL = import.meta.env.DEV
+	? import.meta.env.VITE_WS_URL
+	: `ws://${window.location.host}/websocket/v2`;
+const WS_PRECISE_URL = import.meta.env.DEV
+	? import.meta.env.VITE_WS_PRECISE_URL
+	: `ws://${window.location.host}/websocket/v2/precise`;
 
 const engine = new ZEngine(WS_URL, [
 	"state",
@@ -57,6 +61,22 @@ const precise = new ZEngine(WS_PRECISE_URL);
 new GameplayHandler(engine, precise);
 new RankingPanelHandler(engine);
 
-if (query.get("hide_np") !== null) {
-	document.body.classList.add("hideNp");
+const hideMap = [
+	["hide_np", "#np-container"],
+	["hide_leaderboard", "#leaderboard"],
+	["hide_combo", "#combo-container"],
+	["hide_ur", "#ur-container"],
+	["hide_judgements", "#judgements-container"],
+	["hide_key", "#key-container"],
+	["hide_profile", "#profile-container"],
+	["hide_ranking", "#rankingPanel"],
+	["hide_grade", "#grade-wrapper"],
+	["hide_performance", "#performance-container"],
+	["hide_score", "#score"],
+	["hide_accuracy", "#accuracy-container"],
+];
+
+for (const [key, id] of hideMap) {
+	if (!query.has(key)) continue;
+	document.querySelector(id)?.classList.add("hidden!");
 }

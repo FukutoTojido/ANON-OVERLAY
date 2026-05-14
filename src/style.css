@@ -60,12 +60,6 @@ body {
 
 	font-family: "Die Grotesk", sans-serif;
 	color: white;
-
-	&.hideNp {
-		#np-container {
-			display: none;
-		}
-	}
 }
 
 .font-a {

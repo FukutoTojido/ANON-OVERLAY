@@ -11,22 +11,22 @@ export default class ScoreHandler extends BaseHandler {
 	) {
 		super(engine, { id: "#score" });
 		if (!this.element) return;
+		const formatter = new Intl.NumberFormat("en-US", {
+			minimumIntegerDigits: 6,
+		});
 
 		this.countUp = new CountUp(this.element, 0, {
 			decimalPlaces: 0,
 			autoAnimate: true,
 			duration: 1,
-			formattingFn: (value) =>
-				new Intl.NumberFormat("en-US", { minimumIntegerDigits: 6 }).format(
-					value,
-				),
+			formattingFn: (value) => formatter.format(value),
 		});
 
 		this.countUp.start();
 
 		engine.register_jq(".play?.score?", (_: number, score: number) => {
 			const value = this.update(score);
-			this.onUpdate?.(value)
+			this.onUpdate?.(value);
 		});
 	}
 
@@ -39,7 +39,7 @@ export default class ScoreHandler extends BaseHandler {
 
 		if (isPreMap) {
 			this.countUp.update(0);
-			this.onUpdate?.(0)
+			this.onUpdate?.(0);
 			return 0;
 		}
 
